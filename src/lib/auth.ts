@@ -57,5 +57,41 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  logger: {
+    error(code, ...args) {
+      try {
+        const fs = require("fs")
+        const path = require("path")
+        const logPath = path.join(process.cwd(), "nextauth-errors.log")
+        // Serialize errors and logs
+        const serializedArgs = args.map((arg: any) => {
+          if (arg instanceof Error) {
+            return {
+              name: arg.name,
+              message: arg.message,
+              stack: arg.stack,
+              cause: arg.cause
+            }
+          }
+          return arg
+        })
+        const message = `[ERROR] ${new Date().toISOString()} - Code: ${code} - Args: ${JSON.stringify(serializedArgs)}\n`
+        fs.appendFileSync(logPath, message)
+      } catch (e) {
+        console.error("Failed to write NextAuth error log", e)
+      }
+      console.error(code, ...args)
+    },
+    warn(code, ...args) {
+      try {
+        const fs = require("fs")
+        const path = require("path")
+        const logPath = path.join(process.cwd(), "nextauth-errors.log")
+        const message = `[WARN] ${new Date().toISOString()} - Code: ${code} - Args: ${JSON.stringify(args)}\n`
+        fs.appendFileSync(logPath, message)
+      } catch (e) {}
+      console.warn(code, ...args)
+    },
+  }
 })
 
