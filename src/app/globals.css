@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────
+   CareerSetu Design System — CSS Custom Properties
+   ─────────────────────────────────────────────────── */
+
+:root {
+  --bg-primary: #0d0d1a;
+  --bg-secondary: #1a1a2e;
+  --bg-card: #0a0a15;
+
+  --border-color: #2a2a4a;
+  --border-light: #1e1e3a;
+
+  --color-purple: #c8b4ff;
+  --color-purple-dark: #7f77dd;
+  --color-teal: #5DCAA5;
+  --color-amber: #EF9F27;
+  --color-coral: #F0997B;
+  --color-blue: #82aaff;
+
+  --text-primary: #e8e8f0;
+  --text-secondary: #8888aa;
+  --text-muted: #546e7a;
+}
+
+/* ───────────────────────────────────────────────────
+   Tailwind v4 Theme — Registers custom utility classes
+   e.g. bg-cs-purple, text-cs-teal, border-cs-border
+   ─────────────────────────────────────────────────── */
+
+@theme inline {
+  --color-cs-purple: var(--color-purple);
+  --color-cs-purple-dark: var(--color-purple-dark);
+  --color-cs-teal: var(--color-teal);
+  --color-cs-amber: var(--color-amber);
+  --color-cs-coral: var(--color-coral);
+  --color-cs-blue: var(--color-blue);
+
+  --color-cs-bg-primary: var(--bg-primary);
+  --color-cs-bg-secondary: var(--bg-secondary);
+  --color-cs-bg-card: var(--bg-card);
+
+  --color-cs-border: var(--border-color);
+  --color-cs-border-light: var(--border-light);
+
+  --color-cs-text-primary: var(--text-primary);
+  --color-cs-text-secondary: var(--text-secondary);
+  --color-cs-text-muted: var(--text-muted);
+
+  --font-sans: "Inter", "Noto Sans", system-ui, sans-serif;
+  --font-hindi: "Noto Sans", "Inter", system-ui, sans-serif;
+}
+
+/* ───────────────────────────────────────────────────
+   Base Styles
+   ─────────────────────────────────────────────────── */
+
+body {
+  background-color: #0d0d1a;
+  color: #e8e8f0;
+  font-family: "Inter", "Noto Sans", system-ui, sans-serif;
+}
