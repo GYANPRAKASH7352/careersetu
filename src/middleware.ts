@@ -4,11 +4,12 @@ export default auth((req) => {
   const { nextUrl } = req
   const isLoggedIn = !!req.auth
 
+  const pathname = nextUrl.pathname
   const isProtectedRoute = 
-    nextUrl.pathname.startsWith("/dashboard") ||
-    nextUrl.pathname.startsWith("/onboarding") ||
-    nextUrl.pathname.startsWith("/profile") ||
-    nextUrl.pathname.startsWith("/tools")
+    pathname === "/dashboard" || pathname.startsWith("/dashboard/") ||
+    pathname === "/onboarding" || pathname.startsWith("/onboarding/") ||
+    pathname === "/profile" || pathname.startsWith("/profile/") ||
+    pathname === "/tools" || pathname.startsWith("/tools/")
 
   const isAuthRoute = 
     nextUrl.pathname === "/login" ||
