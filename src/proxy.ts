@@ -3,7 +3,7 @@ import { authConfig } from "./auth.config"
 
 export const { auth } = NextAuth(authConfig)
 
-export default auth((req) => {
+export const proxy = auth((req) => {
   const { nextUrl } = req
   const isLoggedIn = !!req.auth
 
@@ -33,6 +33,8 @@ export default auth((req) => {
 
   return
 })
+
+export default proxy
 
 export const config = {
   matcher: [
